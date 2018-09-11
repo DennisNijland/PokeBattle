@@ -1,7 +1,7 @@
 <?php
 
 
-class Attack
+class Attack extends Pokemon
 {
 	public $Name;
 	public $AttackPoints;
@@ -14,7 +14,9 @@ class Attack
 
 	public function dealDamage($target)
 	{
-		//die($target);
+		//print_r($target);
+		//die();
+		
         if ($target == null) {
             die('Cannot deal damage to opponent; target is null');
         }

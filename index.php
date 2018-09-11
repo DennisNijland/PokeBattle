@@ -6,17 +6,19 @@ require 'Attack.php';
 $pokemons = [];
 
 $p = new Pokemon('Pickachu','Lightning',60,'Fire',20);
+$p->Weakness[] = new Weakness('Fire', 1.5);
 $p->Attacks[] = new Attack('Electric Ring', 50);
 $pokemons[] = $p;
 
 //prettyPrint($p);
 
 
-$c = new Pokemon('Charmeleon','Fire',60,'Lightning',10);
+$c = new Pokemon('Charmeleon','Fire',60,'Water','Lightning');
+$c->Weakness[] = new Weakness('Water', 2);
 $c->Attacks[] = new Attack('Flare', 30);
 $pokemons[] = $c;
 
-
+prettyPrint($c);
 
 foreach($pokemons as $pokemon){
 	prettyPrint($pokemon->Name . " HP " . $pokemon->Health . "/" . $pokemon->HitPoints);	
