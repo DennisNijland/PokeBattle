@@ -1,26 +1,26 @@
 <?php
 
 
-class Attack extends Pokemon
+class Attack
 {
 	public $Name;
 	public $AttackPoints;
+	public $EnergyType;
 	
-	function __construct($Name, $AttackPoints)
+	function __construct($Name, $AttackPoints, $EnergyType)
 	{
 		$this->Name = $Name;
 		$this->AttackPoints = $AttackPoints;
+		$this->EnergyType = $EnergyType;
 	}
 
 	public function dealDamage($target)
 	{
-		//print_r($target);
-		//die();
 		
         if ($target == null) {
             die('Cannot deal damage to opponent; target is null');
         }
-        $target->recieveDamage($this->AttackPoints);
+        $target->recieveDamage($this->AttackPoints, $this->EnergyType);
 
     }
 

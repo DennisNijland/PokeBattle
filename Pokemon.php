@@ -17,24 +17,27 @@ class Pokemon
 		$this->EnergyType = $EnergyType;
 		$this->HitPoints = $HitPoints;
 		$this->Health = $this->HitPoints;
-		$this->Weakness = [];
-		$this->Resistance = [];
+		$this->Weakness = $Weakness;
+		$this->Resistance = $Resistance;
 		$this->Attacks = [];
 	}
 
-	public function recieveDamage($dmg)
+	public function recieveDamage($dmg, $EnergyType)
 	{
-		print_r($this->EnergyType);
-		print_r($this->Weakness[0]->Name);
-		//print_r($this->Resistance);
-		die();
-		if ( $this->EnergyType == $this->Weakness ){
-			echo "energy hetzelfde als weakness";
+		//print_r($this->Name);
+		//print_r($this->Weakness);
+		//print_r($EnergyType);
+		//print_r($dmg);
 
-		}
-        $calculatedDamage = $dmg - $this->Resistance;
-        if( $calculatedDamage > 0) {
+		if( $this->Weakness == $EnergyType ){
+			$Damage = $dmg * 2;
+			
+			$this->Health = $this->Health - $Damage;
+		}else{
+        	$calculatedDamage = $dmg - $this->Resistance;
+        	if( $calculatedDamage > 0) {
             $this->Health = $this->Health - $calculatedDamage;
+        	}
         }
     }
 
@@ -43,6 +46,7 @@ class Pokemon
     }
 
 }
+/*
 class Weakness
 {
 	public $Name;
@@ -54,8 +58,8 @@ class Weakness
 		$this->Value = $Value;
 	}
 
-	public function calculateDamage($target)
+	public function calculateDamage($dmg)
 	{
 
 	}
-}
+}*/
