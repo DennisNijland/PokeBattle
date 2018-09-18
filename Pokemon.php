@@ -24,14 +24,8 @@ class Pokemon
 
 	public function recieveDamage($dmg, $EnergyType)
 	{
-		//print_r($this->Name);
-		//print_r($this->Weakness);
-		//print_r($EnergyType);
-		//print_r($dmg);
-
 		if( $this->Weakness == $EnergyType ){
 			$Damage = $dmg * 2;
-			
 			$this->Health = $this->Health - $Damage;
 		}else{
         	$calculatedDamage = $dmg - $this->Resistance;
@@ -46,20 +40,3 @@ class Pokemon
     }
 
 }
-/*
-class Weakness
-{
-	public $Name;
-	public $Value;
-
-	public function __construct($Name, $Value)
-	{
-		$this->Name = $Name;
-		$this->Value = $Value;
-	}
-
-	public function calculateDamage($dmg)
-	{
-
-	}
-}*/
