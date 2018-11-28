@@ -3,23 +3,22 @@
 class Attack
 {
 	
-	public $Name;
-	public $AttackPoints;
-	public $EnergyType;
+	public $name;
+	public $attackPoints;
 	
-	function __construct($Name, $AttackPoints, $EnergyType)
+	function __construct($name, $attackPoints)
 	{
-		$this->Name = $Name;
-		$this->AttackPoints = $AttackPoints;
-		$this->EnergyType = $EnergyType;
+		$this->name = $name;
+		$this->attackPoints = $attackPoints;
 	}
 
-	public function dealDamage($target)
-	{
+	public function dealDamage($attacker, $target)
+    {
         if ($target == null) {
             die('Cannot deal damage to opponent; target is null');
         }
-        $target->recieveDamage($this->AttackPoints, $this->EnergyType);
+
+        $target->recieveDamage($attacker, $this->attackPoints);
     }
 
     public function __toString()

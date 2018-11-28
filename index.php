@@ -2,48 +2,23 @@
 
 require 'Pokemon.php';
 require 'Attack.php';
+require 'Weakness.php';
+require 'EnergyType.php';
+require 'Resistance.php';
 
-$pokemons = [];
+$p = new Pokemon('Pickachu','60');
+$p->weakness = new Weakness('Fire', 1.5);
+$p->resistance = new Resistance('Fire', 1.5);
+$p->attacks[] = new Attack('Electric Ring', 50);
+$p->attacks[] = new Attack('Pika Punch', 20);
+$p->energyType = new EnergyType('Lightning');
 
-$p = new Pokemon('Pickachu','Lightning',60,'Fire',20);
-//$p->Weakness[] = new Weakness('Fire', 1.5);
-$p->Attacks[] = new Attack('Electric Ring', 50, 'Lightning');
-$pokemons[] = $p;
+$c = new Pokemon('Charmeleon',60);
+$c->weakness = new Weakness('Water', 2);
+$c->resistance = new Resistance('Lightning', 10);
+$c->attacks[] = new Attack('Flare', 30);
+$c->attacks[] = new Attack('Head butt', 10);
+$c->energyType = new EnergyType('Fire');
 
-//prettyPrint($p);
-
-
-$c = new Pokemon('Charmeleon','Fire',60,'Water',10);
-//$c->Weakness[] = new Weakness('Water', 2);
-$c->Attacks[] = new Attack('Flare', 30, 'Fire');
-$pokemons[] = $c;
-
-//prettyPrint($c);
-
-foreach($pokemons as $pokemon){
-	prettyPrint($pokemon->Name . " HP " . $pokemon->Health . "/" . $pokemon->HitPoints);	
-}
-
-prettyPrint($p->Name . " attacked " . $c->Name . " with " . $p->Attacks[0]->Name);
-
-$p->Attacks[0]->dealDamage($c);
-
-foreach($pokemons as $pokemon){
-	prettyPrint($pokemon->Name . " HP " . $pokemon->Health . "/" . $pokemon->HitPoints);	
-}
-
-$c->Attacks[0]->dealDamage($p);
-
-prettyPrint($c->Name . " attacked " . $p->Name . " with " . $c->Attacks[0]->Name);
-
-foreach($pokemons as $pokemon){
-	prettyPrint($pokemon->Name . " HP " . $pokemon->Health . "/" . $pokemon->HitPoints);	
-}
-
-
-function prettyPrint($var)
-	{
-	    echo '<pre>';
-	    print_r($var);
-	    echo '</pre>';
-	}
+$p->attacks[0]->dealDamage($p, $c);
+$c->attacks[0]->dealDamage($c, $p);
